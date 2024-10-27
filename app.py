@@ -44,6 +44,6 @@ if uploaded_data is not None:
     st.dataframe(rank_df)
     
     selected_list=list(rank_df.head(2)["selection"])
-    st.markdown("**The winners are**")
+    st.markdown("**The winners are:**")
     for val in selected_list:
       st.markdown(val)
