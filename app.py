@@ -10,6 +10,13 @@ st.set_page_config(page_title="Borda Count Ranking")
 st.header("Borda Count Ranking System")
 st.write("""This app leverages a Borda Count system to award points to competitors in a ranked order""")
 st.markdown("Here is a **[link](https://en.wikipedia.org/wiki/Borda_count)** to learn more about the Borda Count method.")
+
+with st.expander("Open to see instructions on the data format that works well with this website"):
+    st.write("""The format of the data that works well with the algorithm needs the choices listed as columns with each observations representing people's decisions""")
+    test_data = pd.read_excel("data2.xlsx")
+    st.write("Below is a sample of the data")
+    st.dataframe(test_data.head(3), use_container_width=True)
+  
 uploaded_data = st.file_uploader("Upload the file containing the rank", type=["csv", "xlsx"])
 
 if uploaded_data is not None:
