@@ -11,10 +11,10 @@ uploaded_data = st.file_uploader("Upload the file containing the rank", type=["c
 if uploaded_data is not None:
   if "xlsx" in str(uploaded_data.name):
     df = pd.read_excel(uploaded_data)
-    st.dataframe(df, use_container_width=True)
+    # st.dataframe(df, use_container_width=True)
   elif "csv" in str(uploaded_data.name):
     df = pd.read_csv(uploaded_data)
-    st.dataframe(df, use_container_width=True)
+    # st.dataframe(df, use_container_width=True)
   else:
     df = pd.DataFrame()
     st.error("Please upload a file in the csv or xlsx format")
@@ -23,5 +23,5 @@ if uploaded_data is not None:
   if len(df) > 0:
     choices = st.multiselect("Choose", df.columns)
     new_df = df[choices]
-    st.dataframe(new_df)
+    st.dataframe(new_df, use_container_width=True)
     
