@@ -14,7 +14,7 @@ st.markdown("Here is a **[link](https://en.wikipedia.org/wiki/Borda_count)** to 
 with st.expander("Open to see instructions on the data format that works well with this website"):
     st.write("""The format of the data that works well with the algorithm needs the choices listed as columns with each observations representing people's decisions""")
     st.write("""This is useful for selecting the right columns for running the algorithm.""")
-    test_data = pd.read_excel("data2.xlsx")
+    test_data = pd.read_excel("data_2.xlsx")
     st.write("Below is a sample of the data")
     st.dataframe(test_data.head(3), use_container_width=True)
   
