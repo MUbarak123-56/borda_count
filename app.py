@@ -16,4 +16,9 @@ if uploaded_data is not None:
     df = pd.read_csv(uploaded_data)
     st.dataframe(df, use_container_width=True)
   else:
+    df = pd.DataFrame()
     st.error("Please upload a file in the csv or xlsx format")
+
+
+    
+    
