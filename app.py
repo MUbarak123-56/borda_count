@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns; sns.set(rc={'axes.facecolor':(0,0,0,0), 'figure.facecolor':(0,0,0,0)})
 
 # st.set_page_config(page_title="Borda Count Selection", layout="wide")
-st.set_page_config(page_title="Borda Count Selection")
-st.header("Borda Count Selection System")
+st.set_page_config(page_title="Borda Count Ranking")
+st.header("Borda Count Ranking System")
 st.write("""This app leverages a Borda Count system to award points to competitors in a ranked order""")
 st.markdown("Here is a **[link](https://en.wikipedia.org/wiki/Borda_count)** to learn more about the Borda Count method.")
 uploaded_data = st.file_uploader("Upload the file containing the rank", type=["csv", "xlsx"])
