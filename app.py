@@ -54,7 +54,7 @@ if uploaded_data is not None:
       rank_df["grp"] = rank_df["level"].apply(lambda x: 1 if x < num_candidates else 0)
       #st.dataframe(rank_df)
 
-      fig, ax = plt.subplots(figsize=(8,6))
+      fig, ax = plt.subplots(figsize=(12,8))
       sns.barplot(x="total_counts", y="selection", data=rank_df, hue = "grp")
       ax.set_title("Results",fontdict= {'fontsize': 10, 'fontweight':'bold'})
       ax.set_xlabel("Counts")
