@@ -20,5 +20,8 @@ if uploaded_data is not None:
     st.error("Please upload a file in the csv or xlsx format")
 
 
-    
+  if len(df) > 0:
+    choices = st.multiselect("Choose", df.columns)
+    new_df = df[choices]
+    st.dataframe(new_df)
     
