@@ -5,5 +5,13 @@ import os
 st.set_page_config(page_title="Borda Count Selection")
 st.header("Borda Count Selection System")
 st.write("""This app leverages a Borda Count system to award points to competitors in a ranked order""")
-data = st.file_uploader("Upload the file containing the rank", type=["csv", "xlsx"])
-st.write(data.loc[:,1])
+uploaded_data = st.file_uploader("Upload the file containing the rank", type=["csv", "xlsx"])
+
+if "xlsx" in uploaded_data:
+  df = pd.read_excel(uploaded_data):
+  st.dataframe(df)
+elif "csv" in uploaded_data:
+  df = pd.read_csv(uploaded_data):
+  st.dataframe(df)
+else:
+  st.error("Please upload a file in the csv or xlsx format")
