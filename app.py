@@ -10,9 +10,9 @@ uploaded_data = st.file_uploader("Upload the file containing the rank", type=["c
 if uploaded_data is not None:
   if "xlsx" in str(uploaded_data.name):
     df = pd.read_excel(uploaded_data)
-    st.dataframe(df, width=True)
+    st.dataframe(df, use_container_width=True)
   elif "csv" in str(uploaded_data.name):
     df = pd.read_csv(uploaded_data)
-    st.dataframe(df, width=True)
+    st.dataframe(df, use_container_width=True)
   else:
     st.error("Please upload a file in the csv or xlsx format")
