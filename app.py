@@ -8,10 +8,10 @@ st.write("""This app leverages a Borda Count system to award points to competito
 uploaded_data = st.file_uploader("Upload the file containing the rank", type=["csv", "xlsx"])
 
 if "xlsx" in uploaded_data:
-  df = pd.read_excel(uploaded_data):
+  df = pd.read_excel(uploaded_data)
   st.dataframe(df)
 elif "csv" in uploaded_data:
-  df = pd.read_csv(uploaded_data):
+  df = pd.read_csv(uploaded_data)
   st.dataframe(df)
 else:
   st.error("Please upload a file in the csv or xlsx format")
