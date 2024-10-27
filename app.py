@@ -34,6 +34,7 @@ if uploaded_data is not None:
       n = len(choices)
       new_df = df[choices]
       # st.dataframe(new_df, use_container_width=True)
+      num_candidates = st.number_input("How many candidates would you like to select?")
       
       array_data = np.array(new_df)
       new_array = list(np.unique(array_data))
@@ -49,10 +50,12 @@ if uploaded_data is not None:
       rank_df = pd.DataFrame(final_df.sum(axis=0))
       rank_df = rank_df.rename(columns={0: "total_counts"})
       rank_df = rank_df.sort_values("total_counts", ascending=False).reset_index(drop=False)
+      rank_df["level"] = rank_df.index
+      rank_df["grp"] = rank_df["level"].apply(lambda x: 1 if x < num_candidates else 0)
       #st.dataframe(rank_df)
 
       fig, ax = plt.subplots(figsize=(8,6))
-      sns.barplot(x="total_counts", y="selection", data=rank_df, color = "blue")
+      sns.barplot(x="total_counts", y="selection", data=rank_df, hue = "grp")
       ax.set_title("Results",fontdict= {'fontsize': 10, 'fontweight':'bold'})
       ax.set_xlabel("Counts")
       ax.set_ylabel("Selection")
@@ -63,7 +66,7 @@ if uploaded_data is not None:
       ax.tick_params(axis='y', colors='white')
       st.pyplot(fig)
       
-      selected_list=list(rank_df.head(2)["selection"])
+      selected_list=list(rank_df.head(num_candidates)["selection"])
       st.markdown("**Based on the results above, the winners are:**")
       for val in selected_list:
         st.write(val)
