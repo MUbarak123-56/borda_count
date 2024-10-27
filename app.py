@@ -21,7 +21,8 @@ if uploaded_data is not None:
 
 
   if len(df) > 0:
-    choices = st.multiselect("Choose", df.columns)
+    st.write("Use the widget below to select the columns for voting. Select them in order of their preference")
+    choices = st.multiselect(df.columns)
     new_df = df[choices]
     st.dataframe(new_df, use_container_width=True)
     
