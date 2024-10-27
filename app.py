@@ -2,6 +2,9 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns; sns.set(rc={'axes.facecolor':(0,0,0,0), 'figure.facecolor':(0,0,0,0)})
+
 st.set_page_config(page_title="Borda Count Selection", layout="wide")
 st.header("Borda Count Selection System")
 st.write("""This app leverages a Borda Count system to award points to competitors in a ranked order""")
@@ -46,6 +49,18 @@ if uploaded_data is not None:
       rank_df = rank_df.rename(columns={0: "total_counts"})
       rank_df = rank_df.sort_values("total_counts", ascending=False).reset_index(drop=False)
       st.dataframe(rank_df)
+
+      fig, ax = plt.subplots(figsize=(12,8))
+      sns.barplot(x="total_counts", y="selection", data=rank_df, color = "blue")
+      ax.set_title("Results",fontdict= {'fontsize': 20, 'fontweight':'bold'})
+      ax.set_xlabel("Counts")
+      ax.set_ylabel("Selection")
+      ax.xaxis.label.set_color('white')       
+      ax.yaxis.label.set_color('white')
+      ax.title.set_color('white')
+      ax.tick_params(axis='x', colors='white')   
+      ax.tick_params(axis='y', colors='white')
+      st.pyplot(fig)
       
       selected_list=list(rank_df.head(2)["selection"])
       st.markdown("**Based on the results above, the winners are:**")
