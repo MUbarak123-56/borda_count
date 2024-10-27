@@ -25,6 +25,7 @@ if uploaded_data is not None:
 
 
   if len(df) > 0:
+    num_candidates = st.number_input("How many candidates would you like to select?", value = int)
     st.write("Use the widget below to select the columns for voting. Select them in order of their preference")
     with st.form(key="Selecting columns"):
       choices = st.multiselect("Make your selections", list(df.columns))
@@ -34,7 +35,6 @@ if uploaded_data is not None:
       n = len(choices)
       new_df = df[choices]
       # st.dataframe(new_df, use_container_width=True)
-      num_candidates = st.number_input("How many candidates would you like to select?")
       
       array_data = np.array(new_df)
       new_array = list(np.unique(array_data))
