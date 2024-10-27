@@ -23,6 +23,23 @@ if uploaded_data is not None:
   if len(df) > 0:
     st.write("Use the widget below to select the columns for voting. Select them in order of their preference")
     choices = st.multiselect("Make your selections", list(df.columns))
+    n = len(choices)
     new_df = df[choices]
     st.dataframe(new_df, use_container_width=True)
     
+    array_data = np.array(new_df)
+    new_array = list(np.unique(array_data))
+    df["id"] = df.index
+    new_df = df.melt(id_vars="id", value_vars=df.columns, var_name="choice_rank", value_name="selection")
+    final = new_df.pivot_table(index="id", columns=["selection"], values="choice_rank", aggfunc=lambda x: ' '.join(x))
+    final = final.reset_index(drop=True)
+    choice_order = choices
+    order_dict = {}
+    for i in range(n):
+        order_dict[choice_order[i]] = n - i - 1
+    final_df = final.replace(list(order_dict.keys()), list(order_dict.values()))
+    rank_df = pd.DataFrame(final_df.sum(axis=0))
+    rank_df = rank_df.rename(columns={0: "total_counts"})
+    rank_df = rank_df.sort_values("total_counts", ascending=False).reset_index(drop=False)
+    st.dataframe(rank_df)
+    list(rank_df.head(2)["selection"])
