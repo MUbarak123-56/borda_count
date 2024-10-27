@@ -29,7 +29,7 @@ if uploaded_data is not None:
     if submit_button:
       n = len(choices)
       new_df = df[choices]
-      st.dataframe(new_df, use_container_width=True)
+      # st.dataframe(new_df, use_container_width=True)
       
       array_data = np.array(new_df)
       new_array = list(np.unique(array_data))
