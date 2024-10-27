@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import os
-st.set_page_config(page_title="Borda Count Selection")
+st.set_page_config(page_title="Borda Count Selection", layout="wide")
 st.header("Borda Count Selection System")
 st.write("""This app leverages a Borda Count system to award points to competitors in a ranked order""")
 st.markdown("Here is a **[link](https://en.wikipedia.org/wiki/Borda_count)** to learn more about the Borda Count method.")
