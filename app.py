@@ -46,8 +46,8 @@ if uploaded_data is not None:
       
       array_data = np.array(new_df)
       new_array = list(np.unique(array_data))
-      df["id"] = df.index
-      new_df = df.melt(id_vars="id", value_vars=df.columns, var_name="choice_rank", value_name="selection")
+      new_df["id"] = new_df.index
+      new_df = new_df.melt(id_vars="id", value_vars=df.columns, var_name="choice_rank", value_name="selection")
       final = new_df.pivot_table(index="id", columns=["selection"], values="choice_rank", aggfunc=lambda x: ' '.join(x))
       final = final.reset_index(drop=True)
       choice_order = choices
