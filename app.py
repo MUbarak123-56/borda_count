@@ -80,8 +80,9 @@ if uploaded_data is not None:
       
       selected_list=list(rank_df.head(num_candidates)["selection"])
       st.markdown("**Based on the results above, the winners in order are:**")
-      for val in selected_list:
-        st.write(val)
+        
+      for i in range(len(selected_list)):
+        st.write("Choice ", str(i+1), ":", selected_list[i])
           
   else:
        st.error("Please upload a data set with multiple observations")
