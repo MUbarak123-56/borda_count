@@ -72,7 +72,7 @@ if uploaded_data is not None:
       ax.title.set_color('white')
       ax.tick_params(axis='x', colors='white')   
       ax.tick_params(axis='y', colors='white')
-      ax.legend(color="white")
+      ax.get_legend().remove()
       st.pyplot(fig)
       
       selected_list=list(rank_df.head(num_candidates)["selection"])
