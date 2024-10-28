@@ -82,7 +82,7 @@ if uploaded_data is not None:
       st.markdown("**Based on the results above, the winners in order are:**")
         
       for i in range(len(selected_list)):
-        st.write("Choice ", str(i+1), ":", selected_list[i])
+        st.write("Number ", str(i+1), ":", selected_list[i])
           
   else:
        st.error("Please upload a data set with multiple observations")
