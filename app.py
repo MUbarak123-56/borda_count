@@ -82,5 +82,5 @@ if uploaded_data is not None:
       for val in selected_list:
         st.write(val)
           
-    else:
-        st.error("Please upload a data set with multiple observations")
+   else:
+      st.error("Please upload a data set with multiple observations")
