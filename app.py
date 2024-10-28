@@ -53,7 +53,7 @@ if uploaded_data is not None:
       choice_order = choices
       order_dict = {}
       for i in range(n):
-          order_dict[choice_order[i]] = n - i - 1
+          order_dict[choice_order[i]] = n - i
       final_df = final.replace(list(order_dict.keys()), list(order_dict.values()))
       rank_df = pd.DataFrame(final_df.sum(axis=0))
       rank_df = rank_df.rename(columns={0: "total_counts"})
