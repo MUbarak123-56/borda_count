@@ -36,7 +36,7 @@ if uploaded_data is not None:
 
   if len(df) > 0:
   
-    num_candidates = st.number_input("How many candidates would you like to select?", value = 0)
+    num_candidates = st.number_input("How many candidates would you like to select?", value = 5)
     st.write("Use the widget below to select the columns for voting. Select them in order of their rank")
     with st.form(key="Selecting columns"):
       choices = st.multiselect("Make your selections", list(df.columns), placeholder="Select the columns in order of rank")
@@ -57,6 +57,7 @@ if uploaded_data is not None:
       order_dict = {}
       for i in range(n):
           order_dict[choice_order[i]] = n - i
+          
       final_df = final.replace(list(order_dict.keys()), list(order_dict.values()))
       rank_df = pd.DataFrame(final_df.sum(axis=0))
       rank_df = rank_df.rename(columns={0: "total_counts"})
