@@ -15,7 +15,7 @@ with st.expander("Open to see instructions on the data format that works well wi
     st.write("""The format of the data that works well with the algorithm needs the choices listed as columns with each observations representing people's decisions""")
     st.write("""This is useful for selecting the right columns for running the algorithm.""")
     test_data = pd.read_excel("data_2.xlsx")
-    st.write("Below is a sample of the data")
+    st.write("Below is an example of what the data looks like")
     st.dataframe(test_data.head(3), use_container_width=True)
   
 uploaded_data = st.file_uploader("Upload the file containing the rank", type=["csv", "xlsx"])
